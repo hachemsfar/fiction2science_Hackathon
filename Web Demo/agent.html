@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Your Customers</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWRpb3QtY29udGkiLCJhIjoiY2swb3lpdnQ0MGVpYjNtcHBkbWY3YzU2eCJ9.33yzsNQMLg4OWxqC8x87eA';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [8.647990,50.109949],
+zoom: 11.15
+});
+
+map.on('load', function () {
+// Add a layer showing the places.
+map.addLayer({
+"id": "places",
+"type": "symbol",
+"source": {
+"type": "geojson",
+"data": {
+"type": "FeatureCollection",
+"features": [{
+"type": "Feature",
+"properties": {
+"description": "<a href='index.html'><strong>Frankfurt Airport</strong></a> <p><b>Car Owner:</b>Nadine</p> <p><b>Leave Date:</b>20/10/2019 at 15:00</p> <p><b>Return date:</b>25/09/2019 at 20:00</p> <p><b>Phone Number:</b>+491785412456</p> <p><b>Mail:</b>nadine@gmail.com</p>",
+"icon": "car"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [8.566388,50.049467]
+}
+}, {
+"type": "Feature",
+"properties": {
+"description": "<a href='index.html'><strong>Reichelsheim Airport</strong></a> <p><b>Car Owner:</b> Oliver</p> <p><b>Leave Date:</b>25/09/2019 at 13:00</p> <p><b>Return date:</b>25/09/2019 at 20:00</p> <p><b>Phone Number:</b>+49178541569</p> <p><b>Mail:</b>Oliver@gmail.com</p>",
+
+"icon": "car"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [8.875356,50.334847]
+}
+}, {
+"type": "Feature",
+"properties": {
+"description": "<a href='index.html'><strong>Nurnberg Airport</strong></a> <p><b>Car Owner:</b>John Muller</p> <p><b>Leave Date:</b>10/09/2019 at 12:00</p> <p><b>Return date:</b>25/09/2019 at 20:00</p> <p><b>Phone Number:</b>+491788412456</p> <p><b>Mail:</b>john@gmail.com</p>",
+"icon": "car"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [11.087561,49.494562]
+}
+}, {
+"type": "Feature",
+"properties": {
+"description": "<a href='index.html'><strong>Stugart Airport</strong></a> <p><b>Car Owner:</b>Petter</p> <p><b>Leave Date:</b>14/09/2019 at 10:00</p> <p><b>Return date:</b>26/09/2019 at 9:00</p> <p><b>Phone Number:</b>+49178545886</p> <p><b>Mail:</b>hachem.sfar@supcom.tn</p>",
+"icon": "car"
+},
+"geometry": {
+"type": "Point",
+"coordinates": [9.207806, 48.682820]
+}
+}
+]
+}
+},
+"layout": {
+"icon-image": "{icon}-15",
+"icon-allow-overlap": true,
+"icon-size": 2
+
+}
+});
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// locarion of the feature, with description HTML from its properties.
+map.on('click', 'places', function (e) {
+var coordinates = e.features[0].geometry.coordinates.slice();
+var description = e.features[0].properties.description;
+
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'places', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'places', function () {
+map.getCanvas().style.cursor = '';
+});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>available parking deals</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css"
+
+	<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- Bootstrap, just for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Include mapbox.js and CSS  -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+
+<style>
+.checked {
+  color: orange;
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+   #map {
+            height:300px;
+            width: 100%;
+        }
+h1{
+color:black;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/airport-parking-936.jpg?itok=XOY0APdm");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.element {
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+
+
+</style>
+</head>
+
+<body class="bg">
+    <div class="page-wrapper  p-t-130 p-b-110 font-poppins">
+        <div class="wrapper wrapper--w780">
+		<div class="element">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h1>Registration Info</h1>
+					                        <div class="tm-notification-items">
+                            <div class="media tm-notification-item">
+                                <div class="tm-gray-circle"><img src="img/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
+                                <div class="media-body">
+
+                                    <p class="mb-2"><b>Jessica</b> </p>
+                                    <p class="mb-2"><b>Service price</b> 20 € </p>
+
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+- 35 reviews
+
+
+<i id="myBtn" class="fa fa-map-marker"></i>
+
+<!-- Trigger/Open The Modal -->
+<!--<button >Open Modal</button>-->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+<div id='map'></div>
+  </div>
+
+</div>
+
+
+<button class="btn btn-success" onclick="books()">Book</button>
+
+                                </div>
+                            </div>
+                            <div class="media tm-notification-item">
+                                <div class="tm-gray-circle"><img src="img/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
+                                <div class="media-body">
+                                    <p class="mb-2"><b>Oliver Too</b> </p>
+                                    <p class="mb-2"><b>Service Price</b> 25 € </p>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    - 100 reviews
+
+
+                                    <i id="myBtn" class="fa fa-map-marker"></i>
+
+                                    <!-- Trigger/Open The Modal -->
+                                    <!--<button >Open Modal</button>-->
+
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+
+                                      <!-- Modal content -->
+                                      <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                    <div id='map'></div>
+                                      </div>
+
+                                    </div>
+
+
+                                    <button class="btn btn-success">Book</button>
+                                </div>
+
+                            </div>
+                            <div class="media tm-notification-item">
+                                <div class="tm-gray-circle"><img src="img/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
+                                <div class="media-body">
+                                    <p class="mb-2"><b>Victoria</b> </p>
+                                    <p class="mb-2"><b>Service price</b> 18 € </p>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    - 22 reviews
+
+
+                                    <i id="myBtn" class="fa fa-map-marker"></i>
+
+                                    <!-- Trigger/Open The Modal -->
+                                    <!--<button >Open Modal</button>-->
+
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+
+                                      <!-- Modal content -->
+                                      <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                    <div id='map'></div>
+                                      </div>
+
+                                    </div>
+
+
+                                    <button class="btn btn-success">Book</button>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+                <a href="index.html">  <div class="psw"  style="color:black;">Home Page</div></a>
+
+            </div>
+			</div>
+        </div>
+    </div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+function books() {
+  alert("Your Request Was Sent To The Agent..");
+}
+
+</script>
+
+
+    <!-- Jquery JS-->
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script src="js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+
+
+
+	<!--MAP-->
+	<script>
+    //Some locations to display
+    var loationsToDisplay = [
+        {
+            name: "IAA",
+            location: [8.647783, 50.110016]
+        }
+    ]
+
+    //Your token here
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWRpb3QtY29udGkiLCJhIjoiY2swb3lpdnQ0MGVpYjNtcHBkbWY3YzU2eCJ9.33yzsNQMLg4OWxqC8x87eA';
+
+    //Initialize the map
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: loationsToDisplay[0].location,
+        zoom: 10
+    });
+
+
+    //Create the maker
+    var marker = new mapboxgl.Marker();
+    marker.setLngLat(loationsToDisplay[0].location);
+    marker.addTo(map);
+
+    document.getElementById("name").innerText = loationsToDisplay[0].name
+
+
+
+</script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
